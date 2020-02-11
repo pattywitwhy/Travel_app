@@ -6,7 +6,8 @@ class Api::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(
-                          post_id: params[:post_id]
+                          post_id: params[:post_id],
+                          body: params[:body]
                           )
     if @comment.save
       render 'show.json.jbuilder'
@@ -24,6 +25,7 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
     @comment.post_id = params[:post_id] || @comment.post_id
+    @comment.body = params[:body] || @comment.body
 
     if @comment.save
       render 'show.json.jbuilder'
