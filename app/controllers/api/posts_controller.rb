@@ -19,4 +19,23 @@ class Api::PostsController < ApplicationController
       render json: {errors: @post.errors.full_messages}, statut: :unprocessable_entity
     end
   end
+
+  def update
+    @post = Post.find(params[:id])
+
+    @post.blog = params[:blog] || @post.blog
+
+    if @post.save
+      render 'show.json.jbuilder'
+    else
+      render json: {errors: @post.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.delete
+
+    render json: {messages: "Successfully delete the blog for this post"}
+  end
 end
