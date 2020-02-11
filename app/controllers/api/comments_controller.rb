@@ -37,11 +37,7 @@ class Api::CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     comment.delete
-
-    if comment.save
-      render 'index.json.jbuilder'
-    else
-      render json: {message: "Successfully deleted comment"}
-    end
+    
+    render json: {message: "Successfully deleted comment"}
   end
 end
