@@ -7,7 +7,8 @@ class Api::CitiesController < ApplicationController
   def create
     @city = City.new(
                       name: params[:name],
-                      country: params[:country]
+                      country: params[:country],
+                      post_id: params[:post_id]
                     )
     if @city.save
       render 'show.json.jbuilder'
@@ -26,6 +27,7 @@ class Api::CitiesController < ApplicationController
 
     @city.name = params[:name] || @city.name
     @city.country = params[:country] || @city.country
+    @city.post_id = params[:post_id] || @city.post_id
 
     if @city.save
       render 'show.json.jbuilder'
