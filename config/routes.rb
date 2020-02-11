@@ -15,5 +15,11 @@ Rails.application.routes.draw do
     get "cities/:id" => "cities#show"
     patch "cities/:id" => "cities#update"
     delete "cities/:id" => "cities#destroy"
+
+    get "comments" => "comments#index"
+    post "comments" => "comments#create"
+    get "comments/:id" => "comments#show"
+    patch "comments/:id" => "comments#update"
+    delete "comments/:id" => "comments#destroy"
   end
 end
