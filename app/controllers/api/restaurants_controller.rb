@@ -9,7 +9,8 @@ class Api::RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(
                                   name: params[:name],
                                   location: params[:location],
-                                  blog: params[:blog]
+                                  blog: params[:blog],
+                                  city_id: params[:city_id]
                                 )
     if @restaurant.save
       render 'show.json.jbuilder'
@@ -29,6 +30,7 @@ class Api::RestaurantsController < ApplicationController
     @restaurant.name = params[:name] || @restaurant.name
     @restaurant.location = params[:location] || @restaurant.location
     @restaurant.blog = params[:blog] || @restaurant.blog
+    @restaurant.city_id = params[:city_id] || @restaurant.city_id
 
     if @restaurant.save
       render 'show.json.jbuilder'
