@@ -41,6 +41,6 @@ class Api::RestaurantsController < ApplicationController
     restaurant = Restaurant.find(params[:id])
     restaurant.delete
 
-    render {messages: "Successfully deleted Restaurant"}
+    render json: {messages: "Successfully deleted Restaurant"}
   end
 end
