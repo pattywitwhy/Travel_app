@@ -21,5 +21,11 @@ Rails.application.routes.draw do
     get "comments/:id" => "comments#show"
     patch "comments/:id" => "comments#update"
     delete "comments/:id" => "comments#destroy"
+
+    get "restaurants" => "restaurants#index"
+    post "restaurants" => "restaurants#create"
+    get "restaurants/:id" => "restaurants#show"
+    patch "restaurants/:id" => "restaurants#update"
+    delete "restaurants/:id" => "restaurants#destroy"
   end
 end
