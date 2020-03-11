@@ -11,7 +11,8 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.new(
-                      blog: params[:blog]
+                      blog: params[:blog],
+                      user_id: params[user_id]
                     )
     if @post.save
       render 'show.json.jbuilder'
@@ -24,6 +25,7 @@ class Api::PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     @post.blog = params[:blog] || @post.blog
+    @post.user_id = params[:user_id] || @post.user_id
 
     if @post.save
       render 'show.json.jbuilder'
