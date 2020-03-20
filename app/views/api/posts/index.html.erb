@@ -1,0 +1,18 @@
+<h1>ALL OF MY POSTS!</h1>
+
+<% @posts.in_groups_of(2) do |group| %>
+  <div class="card-deck">
+    <% group.compact.each do |post|  %>
+      <div class="card">
+          <div class="card-body">
+            <div>
+                <h2 class="card-title"><a href="/api/posts/<%= post["id"] %>"><%= post["title"] %></a></h2>
+                <h5 class="card-title"><a href="/api/posts/<%= post["id"] %>"><%= post["blog"] %></a></h5>
+                <h5 class="card-title"><a href="/api/posts/<%= post["id"] %>"><%= post["user_id"] %></a></h5>
+                <p class="card-text"><%= post["body"] %></p>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
